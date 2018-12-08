@@ -16,12 +16,16 @@ int main(int argc, char *argv[]){
   //myread(fileToTest2,(char *)bufferToReadTo2 +8,13);
   //read(fileToRead, (char *)bufferToReadTo +8, 13);
 
-  printf("my string is %s \n",(char *) bufferToReadTo2);
-  printf("The Correctstring is %s \n", (char *)bufferToReadTo);
-  int compValue = memcmp(bufferToReadTo, bufferToReadTo2, 9000);
-  printf("memcmp val is %d \n\n", compValue);
+  //printf("my string is %s \n",(char *) bufferToReadTo2);
+  //printf("The Correctstring is %s \n", (char *)bufferToReadTo);
+  //int compValue = memcmp(bufferToReadTo, bufferToReadTo2, 9000);
+  ///printf("memcmp val is %d \n\n", compValue);
 
   printf("return val is %ld \n", mywrite(fileToTest3, bufferToReadTo, 8));
+  write(writeFile, bufferToReadTo,8);
+  mywrite(fileToTest3, bufferToReadTo, 8);
+  mywrite(fileToTest3, bufferToReadTo, 8);
+  write(writeFile, bufferToReadTo,8);
   write(writeFile, bufferToReadTo,8);
 
   myclose(fileToTest2);
