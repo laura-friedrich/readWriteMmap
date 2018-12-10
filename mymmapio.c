@@ -66,6 +66,7 @@ struct FileStruct* myopen(char *fileName, int flags)  {
   struct FileStruct *fileStruct = malloc(sizeof(struct FileStruct));
   if (fileStruct == NULL){
     fileStruct->error = 1;
+    return fileStruct;
   }
   fileStruct->fileName = fileName;
   fileStruct->bytesWritten =0;

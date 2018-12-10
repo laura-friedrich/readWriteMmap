@@ -1,9 +1,9 @@
 CFLAGS= -Wall -pedantic -g -fPIC
 
 .PHONY: all
-all: test-myio
+all: libmymmapio
 
-test-myio: test-myio.o mymmapio.o
+libmymmapio: test-myio.o mymmapio.o
 	gcc -shared -Wl,-soname,libmyio.so -o libmyio.so mymmapio.o
 	gcc -L. -lmyio -o $@ $^
 
@@ -12,4 +12,4 @@ test-myio: test-myio.o mymmapio.o
 
 .PHONY: clean
 clean:
-	rm -f test-myio.o mymmapio.o test-myio test test2
+	rm -f test-myio.o mymmapio.o libmymmapio test test2

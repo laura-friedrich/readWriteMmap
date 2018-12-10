@@ -9,10 +9,10 @@ int main(int argc, char *argv[]){
   int fileToRead = open("sourceTest", O_RDONLY);
 
 
-  myread(fileToTest2,bufferToReadTo2,3);
-  read(fileToRead, bufferToReadTo, 3);
-  myread(fileToTest2,(char *)bufferToReadTo2+3,12);
-  read(fileToRead,(char *) bufferToReadTo+3, 12);
+  //myread(fileToTest2,bufferToReadTo2,3);
+  read(fileToRead, bufferToReadTo, 20);
+  //myread(fileToTest2,(char *)bufferToReadTo2+3,12);
+  read(fileToRead,(char *) bufferToReadTo+3, 20);
   //myread(fileToTest2,(char *)bufferToReadTo2 +8,13);
   //read(fileToRead, (char *)bufferToReadTo +8, 13);
 
@@ -21,11 +21,11 @@ int main(int argc, char *argv[]){
   //int compValue = memcmp(bufferToReadTo, bufferToReadTo2, 9000);
   ///printf("memcmp val is %d \n\n", compValue);
 
-  printf("return val is %ld \n", mywrite(fileToTest3, bufferToReadTo, 8));
-  write(writeFile, bufferToReadTo,8);
+  mywrite(fileToTest3, bufferToReadTo, 20);
+  write(writeFile, bufferToReadTo,20);
+  mywrite(fileToTest3, bufferToReadTo, 16);
   mywrite(fileToTest3, bufferToReadTo, 8);
-  mywrite(fileToTest3, bufferToReadTo, 8);
-  write(writeFile, bufferToReadTo,8);
+  write(writeFile, bufferToReadTo,16);
   write(writeFile, bufferToReadTo,8);
 
   myclose(fileToTest2);
