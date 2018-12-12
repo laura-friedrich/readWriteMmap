@@ -11,6 +11,10 @@
 - O_TRUNC
 */
 
+
+struct FileStruct* myflush(struct FileStruct *fd)  {
+  return fd;
+}
 //mywrite implementations
 ssize_t mywrite(struct FileStruct *fd, const void *buf, size_t count)  {
 

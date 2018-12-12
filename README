@@ -6,3 +6,4 @@ No known bugs.
 
 Resources used:
 https://stackoverflow.com/questions/18420473/invalid-argument-for-read-write-mmap/18421071
+https://stackoverflow.com/questions/46881377/how-to-map-an-empty-file-using-mmap
