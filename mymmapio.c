@@ -18,6 +18,13 @@ struct FileStruct* myflush(struct FileStruct *fd)  {
 //mywrite implementations
 ssize_t mywrite(struct FileStruct *fd, const void *buf, size_t count)  {
 
+  if (count == 0){
+    if(fd->fileWrittenTo == 1){
+      fd->fileWrittenTo = 2;
+    }
+    return 0;
+  }
+  fd->fileWrittenTo = 0;
   struct stat sb;
   if ((fd->size_of_file - fd->fileOffset)<count) {
     if (fstat(fd->fileDescriptor, &sb) < 0) {
@@ -69,6 +76,7 @@ struct FileStruct* myopen(char *fileName, int flags)  {
   fileStruct->fileDescriptor = open(fileName, O_RDWR | O_CREAT, 0666);
   fileStruct->error = 0;
   fileStruct->fileOffset = 0;
+  fileStruct->fileWrittenTo = 0;
   if (fileStruct->fileDescriptor == -1) {
     free(fileStruct);
     fileStruct->error = 1;
@@ -80,6 +88,7 @@ struct FileStruct* myopen(char *fileName, int flags)  {
     return fileStruct;
   }
   if ((fileStruct->size_of_file = sb.st_size)==0){
+    fileStruct->fileWrittenTo = 1;
     if (ftruncate(fileStruct->fileDescriptor, 1)<0){
       fileStruct->error = -4;
       return fileStruct;
@@ -99,6 +108,13 @@ struct FileStruct* myopen(char *fileName, int flags)  {
 }
 
 int myclose(struct FileStruct *fd)  {
+
+  if (fd->fileWrittenTo == 2){
+    //printf("HERE");
+    if (ftruncate(fd->fileDescriptor, 0)<0){
+      return -1;
+    }
+  }
   if (munmap(fd->fileData, fd->size_of_file)<0) {
     return -3;
   }

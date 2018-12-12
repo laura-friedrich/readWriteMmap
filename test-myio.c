@@ -25,14 +25,16 @@ int main(int argc, char *argv[]){
   int compValue = memcmp(bufferToReadTo, bufferToReadTo2, 9000);
   printf("memcmp val is %d \n\n", compValue);
 
-  mywrite(fileToTest3, bufferToReadTo, 20);
-  write(writeFile, bufferToReadTo,20);
-  mywrite(fileToTest3, bufferToReadTo, 16);
-  mywrite(fileToTest3, bufferToReadTo, 8);
-  write(writeFile, bufferToReadTo,16);
-  write(writeFile, bufferToReadTo,8);
+  mywrite(fileToTest3, bufferToReadTo, 0);
+  printf("val of fileWrittento is %d \n", fileToTest3->fileWrittenTo);
+  write(writeFile, bufferToReadTo,0);
+  //mywrite(fileToTest3, bufferToReadTo, 16);
+  //mywrite(fileToTest3, bufferToReadTo, 8);
+  //write(writeFile, bufferToReadTo,16);
+  //write(writeFile, bufferToReadTo,8);
 
   myclose(fileToTest2);
+  myclose(fileToTest3);
   close(fileToRead);
   free(bufferToReadTo);
   free(bufferToReadTo2);

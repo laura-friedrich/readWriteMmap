@@ -24,9 +24,7 @@
 typedef struct FileStruct{
     char *fileName;
     char fileBuffer[BUFFER_SIZE];
-
     int fileDescriptor;
-
     int flags;
     size_t size_of_file;
     int size_of_data;
@@ -34,6 +32,7 @@ typedef struct FileStruct{
     int error;
     void *fileData;
     int fileOffset;
+    int fileWrittenTo;
     //void *pointer_to_sb;
     //struct stat sb;
 
