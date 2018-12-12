@@ -28,7 +28,8 @@ typedef struct FileStruct{
     int fileDescriptor;
 
     int flags;
-
+    size_t size_of_file;
+    int size_of_data;
     int bytesWritten;
     int error;
     void *fileData;
